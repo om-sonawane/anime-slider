@@ -23,8 +23,14 @@ function App() {
 
   return (
     <div className="App">
+      {/* Background Video */}
+      <video autoPlay loop muted className="background-video">
+        <source src="/bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <nav className="navbar">
-    MangaMixer
+        MangaMixer
       </nav>
       <div className="slider-container">
         <Swiper
