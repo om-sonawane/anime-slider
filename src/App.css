@@ -25,9 +25,25 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.navbar:hover {
-  background-color: #222;
+.navbar {
+  background-color: black;
+  padding: 1rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 }
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffd700; /* Golden color for hover effect */
+}
+
 /* Background video styling */
 .background-video {
   position: fixed;
