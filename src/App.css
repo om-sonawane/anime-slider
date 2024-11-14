@@ -8,6 +8,16 @@ body {
   overflow-x: hidden;
 }
 
+/* Logo styling */
+.logo {
+  width: 8rem;        /* Adjust the size as needed */
+  height: auto;       /* Keeps the aspect ratio */
+  margin-right: 50%; /* Space between the logo and links */
+  display: inline-block;
+  vertical-align: middle; /* Aligns with the navbar links */
+}
+
+
 /* Navbar styles */
 .navbar {
   display: flex;

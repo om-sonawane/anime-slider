@@ -1,83 +1,67 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
-import { FiDownload } from "react-icons/fi";
-
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
-
-// Import images for the slider
-import img1 from './assets/images/goku.png';
-import img2 from './assets/images/itachi.png';
-import img3 from './assets/images/naruto.png';
-import img4 from './assets/images/solo.png';
-
-// Importing page components from 'src/pages'
 import Manga from "./pages/Manga";
 import Romcom from "./pages/Romcom";
 import ModernArt from "./pages/ModernArt";
 import About from "./pages/About";
+import logo from "./assets/logo.png";
 
-// Home component for the main slider
-function Home() {
-  const images = [img1, img2, img3, img4];
+<img src={logo} alt="Website Logo" className="logo" />
 
-  const downloadImage = (src) => {
-    const link = document.createElement("a");
-    link.href = src;
-    link.download = src.substring(src.lastIndexOf("/") + 1);
-    link.click();
-  };
-
-  return (
-    <div className="slider-container">
-      <Swiper spaceBetween={30} navigation={true} modules={[Navigation]} className="image-slider">
-        {images.map((src, index) => (
-          <SwiperSlide key={index}>
-            <img src={src} alt={`Anime sticker ${index + 1}`} className="image" />
-            <button className="download-button" onClick={() => downloadImage(src)}>
-              <FiDownload /> Download
-            </button>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
-  );
-}
-
-// Main App component
 function App() {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/" || location.pathname === "/Home";
+
   return (
-    <Router>
-      <div className="App">
-        {/* Background Video */}
+    <div className="App">
+      {/* Background Video for Home Page */}
+      {isHomePage && (
         <video autoPlay loop muted className="background-video">
           <source src="/bg.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+      )}
 
-        {/* Navbar with Links */}
-        <nav className="navbar">
-          <Link to="/">Home</Link>
-          <Link to="/Manga">Manga</Link>
-          <Link to="/Romcom">Romcom</Link>
-          <Link to="/ModernArt">Modern Art</Link>
-          <Link to="/About">About</Link>
-        </nav>
+      {/* Navbar with Links */}
+      <nav className="navbar">
+        <img src={logo} alt="Website Logo" className="logo" />
+        <Link to="/">Home</Link>
+        <Link to="/Manga">Manga</Link>
+        <Link to="/Romcom">Romcom</Link>
+        <Link to="/ModernArt">Modern Art</Link>
+        <Link to="/About">About</Link>
+      </nav>
 
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Manga" element={<Manga />} />
-          <Route path="/Romcom" element={<Romcom />} />
-          <Route path="/ModernArt" element={<ModernArt />} />
-          <Route path="/About" element={<About />} />
-        </Routes>
-      </div>
-    </Router>
+      {/* Routes */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="home-content">
+              <h1>Welcome to MangaMixer!</h1>
+              <p>
+                Discover a curated collection of anime stickers across various genres,
+                including Manga, Romcom, and Modern Art. Dive into each section to find
+                stickers that capture the essence of your favorite styles.
+              </p>
+              <p>Explore and download unique stickers to personalize your collection!</p>
+            </div>
+          }
+        />
+        <Route path="/Manga" element={<Manga />} />
+        <Route path="/Romcom" element={<Romcom />} />
+        <Route path="/ModernArt" element={<ModernArt />} />
+        <Route path="/About" element={<About />} />
+      </Routes>
+    </div>
   );
 }
 
-export default App;
+export default function AppWithRouter() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
