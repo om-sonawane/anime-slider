@@ -12,19 +12,18 @@ body {
 .logo {
   width: 8rem;        /* Adjust the size as needed */
   height: auto;       /* Keeps the aspect ratio */
-  margin-right: 50%; /* Space between the logo and links */
+  margin-right: auto; /* Aligns logo to the left */
   display: inline-block;
   vertical-align: middle; /* Aligns with the navbar links */
 }
 
-
 /* Navbar styles */
 .navbar {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 60px;
-  background-color: #111;
+  padding: 0 2rem;
+  height: 70px;
+  background-color: black;
   color: #f3f3f3;
   font-size: 1.4rem;
   font-weight: bold;
@@ -32,20 +31,12 @@ body {
   top: 0;
   z-index: 10;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  transition: background-color 0.3s ease;
-}
-
-.navbar {
-  background-color: black;
-  padding: 1rem;
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
+  margin-left: 1.5rem;
   font-size: 1.2rem;
   transition: color 0.3s;
 }
@@ -63,59 +54,162 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1; /* Ensures the video stays in the background */
-  opacity: 0.7; /* Adjust opacity if you want it slightly transparent */
+  opacity: 0.7; /* Slightly transparent */
+  filter: brightness(0.7) contrast(1.2); /* Enhances the video */
 }
 
-/* Slider container */
-.slider-container {
-  padding: 40px 0;
+/* Home content */
+.home-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.image-slider {
-  width: 90%;
-  max-width: 600px;
-  position: relative;
-}
-
-.image {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-  transition: transform 0.4s ease;
-}
-
-.image:hover {
-  transform: scale(1.05);
-}
-
-/* Download button styles */
-.download-button {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(45deg, #111, #444);
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  padding: 0 1rem;
   color: #f3f3f3;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: background 0.4s, transform 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-.download-button:hover {
-  background: linear-gradient(45deg, #222, #666);
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+.home-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+  text-shadow: 0 0 20px #ffd700, 0 0 30px #ffd700;
 }
 
-.download-button svg {
-  margin-right: 8px;
+.home-content p {
   font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.home-content p:last-of-type {
+  font-style: italic;
+  color: #aaa;
+}
+/* Section styles */
+.section {
+  height: 100vh; /* Full viewport height for each section */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  scroll-snap-align: start; /* Snap section into view during scrolling */
+  color: #f3f3f3;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background for readability */
+  backdrop-filter: blur(5px); /* Adds a blur effect to the video behind the sections */
+  border-radius: 12px;
+  margin: 2rem auto; /* Creates space around sections */
+  width: 90%; /* Ensures sections don't take up full width */
+  max-width: 1200px; /* Prevents sections from getting too wide on larger screens */
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffd700; /* Golden color for headings */
+  text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+}
+
+.section p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  line-height: 1.6;
+  color: #ddd; /* Light grey for better contrast on video */
+}
+
+/* Footer styles */
+footer {
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly darker overlay for contrast */
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 1rem;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #fff; /* White on hover */
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+}
+
+/* Background video container to ensure no overflow */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensures video stays in the background */
+  opacity: 0.6; /* Makes video slightly dimmer for better text visibility */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .section {
+    padding: 1rem;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+  }
+
+  .section p {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navbar a {
+    margin: 0.5rem 0;
+  }
+
+  .home-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
 }
