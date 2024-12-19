@@ -1,4 +1,19 @@
 /* Global styles */
+.construction-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffcc00; /* Bright yellow for visibility */
+  color: #333; /* Dark text for contrast */
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
 body {
   margin: 0;
   padding: 0;

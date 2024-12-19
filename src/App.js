@@ -16,6 +16,8 @@ function App() {
         <a href="#about">About</a>
       </nav>
 
+      
+
       {/* Sections */}
       <div id="home" className="section home-section">
         <video autoPlay loop muted className="background-video">
@@ -30,6 +32,9 @@ function App() {
             stickers that capture the essence of your favorite styles.
           </p>
           <p>Explore and download unique stickers to personalize your collection!</p>
+          <div className="construction-banner">
+  🚧 This website is under construction. Stay tuned for updates! 🚧
+          </div>
         </div>
       </div>
 
@@ -74,7 +79,7 @@ function App() {
       {/* Footer */}
       <footer>
         <p>
-          &copy; 2024 MangaMixer. Made with ❤️ by om. <a href="#home">Back to Top</a>
+          &copy; 2024 MangaMixer. Made with ❤️ by OM. <a href="#home">Back to Top</a>
         </p>
       </footer>
     </div>
